@@ -24,16 +24,13 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === '!방수') {
-    msg.reply(exampleEmbed);
+    msg.reply(exampleEmbed)
+        .then(msg => {
+            msg.delete({timeout: 5000})
+        })
     
   }
 });
 
-client.on('message', msg => {
-    if (msg.author === 'Ark') {
-      msg.delete({timeout: 5000});
-      
-    }
-  });
 
 client.login(keys.token);
