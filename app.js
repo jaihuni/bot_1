@@ -24,10 +24,8 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === '!방수') {
-    sent = msg.reply(exampleEmbed);
-    setTimeout(function(){
-        msg.delete_message(sent)
-    }, 10000);
+    msg.reply(exampleEmbed);
+    msg.delete({timeout: 5000});
     
   }
 });
