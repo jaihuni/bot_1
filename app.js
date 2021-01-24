@@ -10,8 +10,8 @@ const exampleEmbed = new Discord.MessageEmbed()
 		{ name: 'Volume Limit', value: '50,000m3'},
         { name: 'Corporation', value: 'jaihuni'},
         { name: 'Destination', value: 'Jita IV - Moon 4 - Caldari Navy Assembly Plant\
-        Perimeter - Tranquility Trading Tower\
-        Ebolfer - Tofu Factory\
+        Perimeter - Tranquility Trading Tower\n\
+        Ebolfer - Tofu Factory\n\
         Siseide - Errestantinople, reaction'},
 	)
 	
