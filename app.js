@@ -5,16 +5,16 @@ const keys = require("./keys.json")
 const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle('Jaihuni Logistics')
-	.setDescription('Some description here')
 	.addFields(
 		{ name: 'Time', value: 'after et 05:00' },
-		{ name: 'volume limit', value: '50,000'},
-        { name: 'Inline field title', value: 'Some value here', inline: true },
-        { name: 'Inline field title', value: 'Some value here', inline: true },
+		{ name: 'Volume Limit', value: '50,000m3'},
+        { name: 'Corporation', value: 'jaihuni'},
+        { name: 'Destination', value: 'Jita IV - Moon 4 - Caldari Navy Assembly Plant'},
+        { value: 'Perimeter - Tranquility Trading Tower'},
+        { value: 'Ebolfer - Tofu Factory'},
+        { value: 'Siseide - Errestantinople, reaction'},
 	)
 	
-	.setImage('https://i.imgur.com/wSTFkRM.png')
-	.setTimestamp()
 
 
 
