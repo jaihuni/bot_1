@@ -9,7 +9,7 @@ const exampleEmbed = new Discord.MessageEmbed()
 		{ name: 'Time', value: 'after et 05:00' },
 		{ name: 'Volume Limit', value: '50,000m3'},
         { name: 'Corporation', value: 'jaihuni'},
-        { name: 'Destination', value: 'Jita IV - Moon 4 - Caldari Navy Assembly Plant\
+        { name: 'Destination', value: 'Jita IV - Moon 4 - Caldari Navy Assembly Plant\n\
         Perimeter - Tranquility Trading Tower\n\
         Ebolfer - Tofu Factory\n\
         Siseide - Errestantinople, reaction'},
