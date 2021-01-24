@@ -21,13 +21,14 @@ const exampleEmbed = new Discord.MessageEmbed()
 	.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
 
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('message', msg => {
   if (msg.content === 'ping') {
-    channel.send(exampleEmbed);
+    msg.reply(exampleEmbed);
   }
 });
 
