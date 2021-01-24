@@ -25,7 +25,7 @@ client.on('ready', () => {
 client.on('message', msg => {
   if (msg.content === '!방수') {
     sent = msg.reply(exampleEmbed);
-    asyncio.sleep(10);
+    sleep(10);
     msg.delete_message(sent)
   }
 });
