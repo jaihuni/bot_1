@@ -26,7 +26,7 @@ client.on('message', msg => {
   if (msg.content === '!방수') {
     msg.reply(exampleEmbed)
         .then(msg => {
-            msg.delete({timeout: 5000})
+            msg.delete({timeout: 10000})
         })
     
   }
