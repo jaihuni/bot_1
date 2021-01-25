@@ -6,7 +6,7 @@ const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle('Jaihuni Logistics')
 	.addFields(
-		{ name: 'Time', value: 'after et 05:00' },
+		{ name: 'Time', value: 'Monday\nafter et 05:00' },
 		{ name: 'Volume Limit', value: '50,000m3'},
         { name: 'Corporation', value: 'jaihuni'},
         { name: 'Destination', value: 'Jita IV - Moon 4 - Caldari Navy Assembly Plant\n\
