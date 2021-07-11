@@ -4,15 +4,9 @@ const keys = require("./keys.json")
 
 const exampleEmbed = new Discord.MessageEmbed()
 	.setColor('#0099ff')
-	.setTitle('Jaihuni Logistics')
+	.setTitle('Constructioning')
 	.addFields(
-		{ name: 'Time', value: 'Monday\nafter et 05:00' },
-		{ name: 'Volume Limit', value: '50,000m3'},
-        { name: 'Corporation', value: 'jaihuni'},
-        { name: 'Destination', value: 'Jita IV - Moon 4 - Caldari Navy Assembly Plant\n\
-        Perimeter - Tranquility Trading Tower\n\
-        Ebolfer - Tofu Factory\n\
-        Siseide - Errestantinople, reaction'},
+		{ name: '공사 중', value: '뜯어 고치는 중이에오.' }
 	)
 	
 
