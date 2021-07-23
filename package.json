@@ -1,5 +1,5 @@
 {
-	"name": "discord-slash-bot",
+	"name": "bot_1",
 	"version": "1.0.0",
 	"description": "This bot is a simple Discord Slash Bot.",
 	"main": "app.js",
@@ -13,7 +13,7 @@
 		"discord.js",
 		"discord slash commands"
 	],
-	"author": "Muratva Stark",
+	"author": "Jaihuni",
 	"license": "MIT",
 	"dependencies": {
 		"discord.js": "^12.5.1",
