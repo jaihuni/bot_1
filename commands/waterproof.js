@@ -1,6 +1,6 @@
 module.exports = {
 	name: "waterproof",
-	description: "무슨 일이 일어나고 있나요?",
+	description: "What",
 	options: [
 	],
 	async execute(_bot, say, interaction, args) {
