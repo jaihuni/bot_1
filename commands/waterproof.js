@@ -1,5 +1,5 @@
 module.exports = {
-	name: "방수",
+	name: "waterproof",
 	description: "무슨 일이 일어나고 있나요?",
 	options: [
 	],
