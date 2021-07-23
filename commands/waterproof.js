@@ -4,6 +4,12 @@ module.exports = {
 	name: "waterproof",
 	description: "What",
 	options: [
+		{
+			name: "text",
+			description: "You can print something on the bot.",
+			type: 3,
+			required: false,
+		},
 	],
 	async execute(_bot, say, interaction, args) {
         const exampleEmbed = new MessageEmbed()
