@@ -2,22 +2,21 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
 	name: "waterproof",
-	description: "What",
+	description: "Say command with embed.",
 	options: [
 		{
 			name: "text",
 			description: "You can print something on the bot.",
 			type: 3,
-			required: false,
+			required: true,
 		},
 	],
-	async execute(_bot, say, interaction, args) {
-        const exampleEmbed = new MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('Constructioning')
-        .addFields(
-            { name: '공사 중', value: '뜯어 고치는 중이에오.' }
-        )
-		await say(interaction, exampleEmbed);
+	async execute(bot, say, interaction, args) {
+		const embed = new MessageEmbed()
+			.setDescription(args[0].value)
+			.setColor("RANDOM")
+			.setTimestamp()
+			.setFooter(bot.user.username);
+		await say(interaction, embed);
 	},
 };
