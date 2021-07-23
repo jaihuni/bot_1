@@ -1,10 +1,12 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = {
 	name: "waterproof",
 	description: "What",
 	options: [
 	],
 	async execute(_bot, say, interaction, args) {
-        const exampleEmbed = new Discord.MessageEmbed()
+        const exampleEmbed = new MessageEmbed()
         .setColor('#0099ff')
         .setTitle('Constructioning')
         .addFields(
