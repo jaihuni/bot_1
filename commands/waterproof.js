@@ -1,15 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-	name: "waterproof",
-	description: "What",
+	name: "방수",
+	description: "무슨 일이 일어나고 있나요?",
 	options: [
-		{
-			name: "text",
-			description: "You can print something on the bot.",
-			type: 3,
-			required: false,
-		},
 	],
 	async execute(_bot, say, interaction, args) {
         const exampleEmbed = new MessageEmbed()
