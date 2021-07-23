@@ -11,6 +11,7 @@ Bot.on("ready", async () => {
 	for (const fileName of cmdFiles) {
 		const File = require(`./commands/${fileName}`);
 		Commands.push(File);
+		console.log(`${File.name}`);
 		await Bot.api.applications(Bot.user.id).commands.post({
 			data: {
 				name: File.name,
