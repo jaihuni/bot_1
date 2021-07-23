@@ -1,30 +1,54 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const keys = require("./keys.json")
+const { Client, APIMessage } = require("discord.js");
+const { readdirSync } = require("fs");
+const Bot = new Client();
+const Config = require("./config");
+const Commands = [];
+const cmdFiles = readdirSync("./commands").filter((file) =>
+	file.endsWith(".js"),
+);
 
-const exampleEmbed = new Discord.MessageEmbed()
-	.setColor('#0099ff')
-	.setTitle('Constructioning')
-	.addFields(
-		{ name: '공사 중', value: '뜯어 고치는 중이에오.' }
+Bot.on("ready", async () => {
+	for (const fileName of cmdFiles) {
+		const File = require(`./commands/${fileName}`);
+		Commands.push(File);
+		await Bot.api.applications(Bot.user.id).commands.post({
+			data: {
+				name: File.name,
+				description: File.description,
+				options: File.options,
+			},
+		});
+	}
+	console.info(`Logged in as ${Bot.user.username}`);
+});
+
+Bot.ws.on("INTERACTION_CREATE", (interaction) => {
+	const CMDFile = Commands.find(
+		(cmd) => cmd.name.toLowerCase() === interaction.data.name.toLowerCase(),
+	);
+	if (CMDFile)
+		CMDFile.execute(Bot, say, interaction, interaction.data.options);
+});
+
+Bot.login(Config.token);
+
+async function say(interaction, content) {
+	return Bot.api
+		.interactions(interaction.id, interaction.token)
+		.callback.post({
+			data: {
+				type: 4,
+				data: await createAPIMessage(interaction, content),
+			},
+		});
+}
+
+async function createAPIMessage(interaction, content) {
+	const apiMessage = await APIMessage.create(
+		Bot.channels.resolve(interaction.channel_id),
+		content,
 	)
-	
-
-
-
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.on('message', msg => {
-  if (msg.content === '!방수') {
-    msg.reply(exampleEmbed)
-        .then(msg => {
-            msg.delete({timeout: 60000})
-        })
-    
-  }
-});
-
-
-client.login(keys.token);
+		.resolveData()
+		.resolveFiles();
+	return { ...apiMessage.data, files: apiMessage.files };
+}
