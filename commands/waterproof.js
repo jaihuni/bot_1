@@ -12,6 +12,6 @@ module.exports = {
         .addFields(
             { name: '공사 중', value: '뜯어 고치는 중이에오.' }
         )
-		await say(interaction, exampleEmbed);
+		await say(interaction, {embeds: [exampleEmbed]});
 	},
 };

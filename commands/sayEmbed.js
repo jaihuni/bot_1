@@ -17,6 +17,6 @@ module.exports = {
 			.setColor("RANDOM")
 			.setTimestamp()
 			.setFooter(bot.user.username);
-		await say(interaction, embed);
+		await say(interaction, {embeds: [embed]});
 	},
 };
