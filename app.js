@@ -1,6 +1,6 @@
-const { Client, APIMessage } = require("discord.js");
+const { Client, Intents,  MessagePayload } = require("discord.js");
 const { readdirSync } = require("fs");
-const Bot = new Client();
+const Bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
 const Config = require("./config");
 const Commands = [];
 const cmdFiles = readdirSync("./commands").filter((file) =>
@@ -45,7 +45,7 @@ async function say(interaction, content) {
 }
 
 async function createAPIMessage(interaction, content) {
-	const apiMessage = await APIMessage.create(
+	const apiMessage = await MessagePayload.create(
 		Bot.channels.resolve(interaction.channel_id),
 		content,
 	)

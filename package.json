@@ -16,7 +16,7 @@
 	"author": "Jaihuni",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^12.5.1",
+		"discord.js": "^13.1.0",
 		"dotenv": "^8.2.0"
 	},
 	"devDependencies": {
