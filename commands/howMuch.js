@@ -2,12 +2,12 @@ const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports = {
-	name: "say",
-	description: "Say command.",
+	name: "howMuch",
+	description: "Item price",
 	options: [
 		{
 			name: "text",
-			description: "You can print some price with itemid",
+			description: "Item ID",
 			type: 3,
 			required: true,
 		},
