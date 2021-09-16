@@ -20,7 +20,10 @@ module.exports = {
 
 		fetch("https://api.evemarketer.com/ec/marketstat/json?typeid="+ args[0].value +"&regionlimit=1&usesystem=30000142")
 		.then((response) => response.json())
-		.then((result) => data = result);
+		.then((result) => {
+			data = result;
+			console.log(data);
+		});
 
 		sellminPrice = data[0].sell.min;
 		buymaxPrice = data[0].buy.max;
@@ -31,6 +34,6 @@ module.exports = {
 			.setColor("RANDOM")
 			.setTimestamp()
 			.setFooter(bot.user.username);
-		await say(interaction, {embeds: [embed]});
+		await say(interaction, {embeds: [embed]});*/
 	},
 };
