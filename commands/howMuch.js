@@ -25,8 +25,8 @@ module.exports = {
 			console.log(data);
 		});
 
-		sellminPrice = data[0].sell.min;
-		buymaxPrice = data[0].buy.max;
+		sellminPrice = data.sell.min;
+		buymaxPrice = data.buy.max;
 
 		const embed = new MessageEmbed()
 			.setDescription("sellminPrice: " + sellminPrice)
