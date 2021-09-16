@@ -16,10 +16,11 @@ module.exports = {
 
 		var sellminPrice;
 		var buymaxPrice;
+		var data;
 
 		fetch("https://api.evemarketer.com/ec/marketstat/json?typeid="+ args[0].value +"&regionlimit=1&usesystem=30000142")
 		.then((response) => response.json())
-		.then((data) => console.log(data));
+		.then((result) => data = result));
 
 		sellminPrice = data[0].sell.min;
 		buymaxPrice = data[0].buy.max;
