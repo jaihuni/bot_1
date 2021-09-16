@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 const { Client, Intents,  MessagePayload } = require("discord.js");
 const { readdirSync } = require("fs");
 const Bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
@@ -23,7 +24,8 @@ Bot.on("ready", async () => {
 	console.info(`Logged in as ${Bot.user.username}`);
 
 	fetch("https://api.evemarketer.com/ec/marketstat/json?typeid=578&regionlimit=1&usesystem=30000142")
-		.then((response) => console.log(response));git
+		.then((response) => response.json())
+		.then((data) => console.log(data));
 });
 
 Bot.ws.on("INTERACTION_CREATE", (interaction) => {
