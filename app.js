@@ -23,7 +23,7 @@ Bot.on("ready", async () => {
 	console.info(`Logged in as ${Bot.user.username}`);
 
 	fetch("https://api.evemarketer.com/ec/marketstat/json?typeid=578&regionlimit=1&usesystem=30000142")
-		.then((response) => console.log(response));
+		.then((response) => console.log(response));git
 });
 
 Bot.ws.on("INTERACTION_CREATE", (interaction) => {
