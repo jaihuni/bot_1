@@ -28,11 +28,17 @@ module.exports = {
 			buymaxPrice = data[0]["buy"]["max"];
 	
 			const embed = new MessageEmbed()
-				.setDescription("sellminPrice: " + sellminPrice)
-				.setDescription("buymaxPrice: " + buymaxPrice)
+				.setTitle('eveMarketer')
+				.setURL('https://evemarketer.com/types/'+args[0])
+				.setDescription("Item ID : "  + args[0])
+				.addFields(
+					{ name: 'buy max', value: buymaxPrice },
+					{ name: 'sell min', value: sellminPrice }
+				)
 				.setColor("RANDOM")
 				.setTimestamp()
 				.setFooter(bot.user.username);
+			
 			say(interaction, {embeds: [embed]});
 		});
 	},
