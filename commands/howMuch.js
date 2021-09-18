@@ -29,7 +29,6 @@ module.exports = {
 	
 			const embed = new MessageEmbed()
 				.setTitle('eveMarketer')
-				.setURL('https://evemarketer.com/types/'+args[0])
 				.setDescription("Item ID : "  + args[0])
 				.addFields(
 					{ name: 'buy max', value: ''+buymaxPrice },
