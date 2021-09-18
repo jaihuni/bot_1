@@ -29,11 +29,14 @@ module.exports = {
 	
 			const embed = new MessageEmbed()
 				.setTitle('eveMarketer')
-				.setDescription("Item ID : "  + args[0])
+				.setURL('https://evemarketer.com/types/'+args[0].value)
+				.setDescription("Item ID : "  + args[0].value)
+				.setThumbnail('https://i.imgur.com/AfFp7pu.png')
 				.addFields(
 					{ name: 'buy max', value: ''+buymaxPrice },
 					{ name: 'sell min', value: ''+sellminPrice }
 				)
+				.setThumbnail('https://imageserver.eveonline.com/Type/'+args[0].value+'_64.png')
 				.setColor("RANDOM")
 				.setTimestamp()
 				.setFooter(bot.user.username);
