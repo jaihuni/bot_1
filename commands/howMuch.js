@@ -23,17 +23,17 @@ module.exports = {
 		.then((result) => {
 			data = result;
 			console.log(data);
+
+			sellminPrice = data[0]["sell"]["min"];
+			buymaxPrice = data[0]["buy"]["max"];
+	
+			const embed = new MessageEmbed()
+				.setDescription("sellminPrice: " + sellminPrice)
+				.setDescription("buymaxPrice: " + buymaxPrice)
+				.setColor("RANDOM")
+				.setTimestamp()
+				.setFooter(bot.user.username);
+			await say(interaction, {embeds: [embed]});
 		});
-
-		sellminPrice = data.sell.min;
-		buymaxPrice = data.buy.max;
-
-		const embed = new MessageEmbed()
-			.setDescription("sellminPrice: " + sellminPrice)
-			.setDescription("buymaxPrice: " + buymaxPrice)
-			.setColor("RANDOM")
-			.setTimestamp()
-			.setFooter(bot.user.username);
-		await say(interaction, {embeds: [embed]});
 	},
 };
