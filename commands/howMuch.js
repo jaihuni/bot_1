@@ -32,8 +32,8 @@ module.exports = {
 				.setURL('https://evemarketer.com/types/'+args[0])
 				.setDescription("Item ID : "  + args[0])
 				.addFields(
-					{ name: 'buy max', value: buymaxPrice },
-					{ name: 'sell min', value: sellminPrice }
+					{ name: 'buy max', value: ''+buymaxPrice },
+					{ name: 'sell min', value: ''+sellminPrice }
 				)
 				.setColor("RANDOM")
 				.setTimestamp()
