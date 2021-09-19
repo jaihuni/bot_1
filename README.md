@@ -7,9 +7,9 @@ from origin code
   </a>
 </p>
 
-> This bot is a simple Discord Slash Bot.
+> This bot is a simple Discord Slash Bot with EVE online.
 
-### 🏠 [Homepage](https://github.com/muratvastark/discord-slash-bot)
+### 🏠 [Homepage](https://github.com/jaihuni/bot_1)
 
 ## Usage
 
@@ -34,12 +34,17 @@ from origin code
 
 ## Author
 
-👤 **Muratva Stark**
+👤 **jaihuni Kim**
+
+* Discord: [jaihuni](https://discord.com/users/388299788258639873)
+* Github: [@jaihuni](https://github.com/jaihuni)
+
+## 🤝 Contributing
+
+👤 Forked by - **Muratva Stark** 
 
 * Discord: [Muratva Stark](https://discord.com/users/470974660264067072)
 * Github: [@muratvastark](https://github.com/muratvastark)
-
-## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/muratvastark/discord-slash-bot/issues). 
 
@@ -49,6 +54,6 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2021 [Muratva Stark](https://github.com/muratvastark).<br />
-This project is [MIT](https://github.com/muratvastark/discord-slash-bot/blob/main/LICENSE) licensed.
+Copyright © 2021 [jaihuni Kim](https://github.com/jaihuni).<br />
+This project is [MIT](https://github.com/jaihuni/bot_1/blob/master/LICENSE) licensed.
 
