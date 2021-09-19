@@ -2,16 +2,23 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
 	name: "방수",
-	description: "무슨 일이 일어나고 있나요?",
+	description: "Waterproof KJH 근황",
 	options: [
 	],
 	async execute(_bot, say, interaction, args) {
         const exampleEmbed = new MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('Constructioning')
+		.setColor('RANDOM')
+		.setURL('https://www.youtube.com/watch?v=J_bPzOEhAKM')
+		.setTitle('Waterproof KJH')
+		.setThumbnail('https://images.evetech.net/characters/2114028655/portrait')
         .addFields(
-            { name: '공사 중', value: '뜯어 고치는 중이에오.' }
-        )
+			{ name: '소속', value: '육군 지상작전사령부 제2군단 제7보병사단' },
+			{ name: '신규 명령어', value: '21/09/19: howmuch "itemID"\nitemID를 치면 지타 셀민과바이맥을 보여줌' },
+			{ name: '연락 가능 시간', value: '평일: 1730 ~ 2050, 주말: 0830 ~ 2050\n근무에 의해 연락을 못 받을 수 있으며 22~24시 사이에도 확률적으로 등장 가능' },
+			{ name: '전역일', value: '2022/09/01' }
+		)
+		.setTimestamp()
+
 		await say(interaction, {embeds: [exampleEmbed]});
 	},
 };
