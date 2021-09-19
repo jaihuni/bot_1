@@ -8,7 +8,7 @@ module.exports = {
 		{
 			name: "text",
 			description: "Item ID",
-			type: 3,
+			type: 4,
 			required: true,
 		},
 	],
