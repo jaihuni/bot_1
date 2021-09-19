@@ -19,6 +19,8 @@ module.exports = {
 		)
 		.setTimestamp()
 
-		await say(interaction, {embeds: [exampleEmbed]});
+		await interaction.reply({embeds: [exampleEmbed]});
+		await wait(30000);
+		await interaction.deleteReply();
 	},
 };
