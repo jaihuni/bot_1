@@ -1,5 +1,3 @@
-from origin code
-
 <h1 align="center">Welcome to Discord Slash Bot 👋</h1>
 <p>
   <a href="#" target="_blank">
