@@ -43,7 +43,8 @@ async function say(interaction, content) {
 				type: 4,
 				data: await createAPIMessage(interaction, content),
 			},
-		});
+		})
+		.then(m => m.delete({ timeout: 30000 }));
 }
 
 async function createAPIMessage(interaction, content) {
