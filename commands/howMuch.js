@@ -22,7 +22,7 @@ module.exports = {
 		.then((response) => response.json())
 		.then((result) => {
 			data = result;
-			console.log(data);
+			//console.log(data);
 
 			sellminPrice = data[0]["sell"]["min"];
 			buymaxPrice = data[0]["buy"]["max"];
