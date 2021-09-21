@@ -8,7 +8,7 @@ const cmdFiles = readdirSync("./commands").filter((file) =>
 	file.endsWith(".js"),
 );
 
-Bot.once("ready", () => {
+Bot.once("ready", async () => {
 	for (const fileName of cmdFiles) {
 		const File = require(`./commands/${fileName}`);
 		Commands.push(File);
