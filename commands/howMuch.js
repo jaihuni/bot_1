@@ -33,7 +33,7 @@ module.exports = {
 			const embed = new MessageEmbed()
 				.setTitle('eveMarketer')
 				.setURL('https://evemarketer.com/types/'+args.getInteger('itemid'))
-				.setDescription("Item ID : "  + args.getInteger('itemidt'))
+				.setDescription("Item ID : "  + args.getInteger('itemid'))
 				.setThumbnail('https://i.imgur.com/AfFp7pu.png')
 				.addFields(
 					{ name: 'buy max', value: ''+buymaxPrice },
