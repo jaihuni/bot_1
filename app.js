@@ -8,7 +8,7 @@ const cmdFiles = readdirSync("./commands").filter((file) =>
 	file.endsWith(".js"),
 );
 
-Bot.on("ready", async () => {
+Bot.once("ready", () => {
 	for (const fileName of cmdFiles) {
 		const File = require(`./commands/${fileName}`);
 		Commands.push(File);
@@ -25,7 +25,7 @@ Bot.on("ready", async () => {
 
 });
 
-Bot.ws.on("INTERACTION_CREATE", (interaction) => {
+Bot.on("interactionCreate", async interaction => {
 	const CMDFile = Commands.find(
 		(cmd) => cmd.name.toLowerCase() === interaction.data.name.toLowerCase(),
 	);
