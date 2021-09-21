@@ -20,7 +20,7 @@ module.exports = {
 		)
 		.setTimestamp()
 
-		await interaction.reply({embeds: [exampleEmbed], ephemeral: true});
+		await interaction.reply({embeds: [exampleEmbed]});
 		await wait(30000);
 		await interaction.deleteReply();
 	},
