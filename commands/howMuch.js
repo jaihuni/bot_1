@@ -7,7 +7,7 @@ module.exports = {
 	description: "Item price",
 	options: [
 		{
-			name: "text",
+			name: "int",
 			description: "Item ID",
 			type: 4,
 			required: true,
