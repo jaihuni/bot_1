@@ -35,7 +35,7 @@ Bot.on("interactionCreate", async interaction => {
 		(cmd) => cmd.name.toLowerCase() === commandName.toLowerCase(),
 	);
 	if (CMDFile)
-		CMDFile.execute(Bot, say, interaction, interaction.data.options);
+		CMDFile.execute(Bot, say, interaction, interaction.options);
 });
 
 Bot.login(Config.token);

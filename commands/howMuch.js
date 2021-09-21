@@ -18,7 +18,7 @@ module.exports = {
 		var buymaxPrice;
 		var data;
 
-		fetch("https://api.evemarketer.com/ec/marketstat/json?typeid="+ args[0].value +"&regionlimit=1&usesystem=30000142")
+		fetch("https://api.evemarketer.com/ec/marketstat/json?typeid="+ args.getInteger('int') +"&regionlimit=1&usesystem=30000142")
 		.then((response) => response.json())
 		.then((result) => {
 			data = result;
