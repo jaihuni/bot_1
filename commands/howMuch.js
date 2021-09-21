@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
+const wait = require('util').promisify(setTimeout);
 
 module.exports = {
 	name: "howmuch",
@@ -18,7 +19,8 @@ module.exports = {
 		var buymaxPrice;
 		var data;
 
-		fetch("https://api.evemarketer.com/ec/marketstat/json?typeid="+ args.getInteger('int') +"&regionlimit=1&usesystem=30000142")
+		await interaction.deferReply();
+		await fetch("https://api.evemarketer.com/ec/marketstat/json?typeid="+ args.getInteger('int') +"&regionlimit=1&usesystem=30000142")
 		.then((response) => response.json())
 		.then((result) => {
 			data = result;
@@ -29,19 +31,21 @@ module.exports = {
 	
 			const embed = new MessageEmbed()
 				.setTitle('eveMarketer')
-				.setURL('https://evemarketer.com/types/'+args[0].value)
-				.setDescription("Item ID : "  + args[0].value)
+				.setURL('https://evemarketer.com/types/'+args.getInteger('int'))
+				.setDescription("Item ID : "  + args.getInteger('int'))
 				.setThumbnail('https://i.imgur.com/AfFp7pu.png')
 				.addFields(
 					{ name: 'buy max', value: ''+buymaxPrice },
 					{ name: 'sell min', value: ''+sellminPrice }
 				)
-				.setThumbnail('https://imageserver.eveonline.com/Type/'+args[0].value+'_64.png')
+				.setThumbnail('https://imageserver.eveonline.com/Type/'+args.getInteger('int')+'_64.png')
 				.setColor("RANDOM")
 				.setTimestamp()
 				.setFooter(bot.user.username);
 			
-			say(interaction, {embeds: [embed]});
+				interaction.reply({embeds: [embed]});
 		});
+		await wait(30000);
+		await interaction.deleteReply();
 	},
 };
