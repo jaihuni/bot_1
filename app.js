@@ -26,8 +26,13 @@ Bot.once("ready", async () => {
 });
 
 Bot.on("interactionCreate", async interaction => {
+
+	if (!interaction.isCommand()) return;
+
+	const { commandName } = interaction; 
+
 	const CMDFile = Commands.find(
-		(cmd) => cmd.name.toLowerCase() === interaction.data.name.toLowerCase(),
+		(cmd) => cmd.name.toLowerCase() === commandName.toLowerCase(),
 	);
 	if (CMDFile)
 		CMDFile.execute(Bot, say, interaction, interaction.data.options);
