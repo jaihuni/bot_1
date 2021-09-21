@@ -44,7 +44,7 @@ module.exports = {
 				.setTimestamp()
 				.setFooter(bot.user.username);
 			
-				interaction.reply({embeds: [embed]});
+				interaction.editreply({embeds: [embed]});
 		});
 		await wait(30000);
 		await interaction.deleteReply();
