@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const wait = require('util').promisify(setTimeout);
 
 module.exports = {
 	name: "방수",
