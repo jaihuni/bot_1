@@ -1,15 +1,10 @@
+const { SlashCommandBuilder } = require('discord.js');
+
 module.exports = {
-	name: "say",
-	description: "Say command.",
-	options: [
-		{
-			name: "text",
-			description: "You can print something on the bot.",
-			type: 3,
-			required: true,
-		},
-	],
-	async execute(_bot, say, interaction, args) {
-		await say(interaction, args[0].value);
+	data: new SlashCommandBuilder()
+		.setName('say')
+		.setDescription('Say command.'),
+	async execute(interaction) {
+		await interaction.reply('hello');
 	},
 };

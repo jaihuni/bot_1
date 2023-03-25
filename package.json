@@ -2,10 +2,10 @@
 	"name": "bot_1",
 	"version": "1.0.0",
 	"description": "This bot is a simple Discord Slash Bot.",
-	"main": "app.js",
+	"main": "index.js",
 	"scripts": {
 		"format": "prettier --write .",
-		"start": "node app",
+		"start": "node index",
 		"dev": "nodemon"
 	},
 	"keywords": [
@@ -16,7 +16,7 @@
 	"author": "Jaihuni",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^13.1.0",
+		"discord.js": "^14.8.0",
 		"dotenv": "^8.2.0",
 		"node-fetch": "^2.6.1"
 	},

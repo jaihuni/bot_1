@@ -39,11 +39,6 @@
 
 ## 🤝 Contributing
 
-👤 Forked by - **Muratva Stark** 
-
-* Discord: [Muratva Stark](https://discord.com/users/470974660264067072)
-* Github: [@muratvastark](https://github.com/muratvastark)
-
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/muratvastark/discord-slash-bot/issues). 
 
 ## Show your support
