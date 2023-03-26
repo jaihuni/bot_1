@@ -1,8 +1,25 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 
 let start = false;
 let user = [];
 let unit = [];
+let box;
+
+const row = new ActionRowBuilder()
+.addComponents(
+	new ButtonBuilder()
+		.setCustomId('scissors')
+		.setLabel('가위')
+		.setStyle(ButtonStyle.Primary),
+	new ButtonBuilder()
+		.setCustomId('rock')
+		.setLabel('바위')
+		.setStyle(ButtonStyle.Success),
+	new ButtonBuilder()
+		.setCustomId('paper')
+		.setLabel('보')
+		.setStyle(ButtonStyle.Danger),
+);
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -21,14 +38,23 @@ module.exports = {
 					{ name: '현황', value: 'status' },
 				)),
 	async execute(interaction) {
+
 		const category = interaction.options.getString('옵션');
 		if (category === 'start') {
 			if(start === true)  {
 				await interaction.reply('이미 시작된 게임이 있어요');
 				return;
 			}
+			let embed = new EmbedBuilder()
+				.setColor("Random")
+				.setTitle('가위바위보')
+				.addFields(
+					{ name: '참가자', value: "-"},
+				)
+				.setTimestamp();
 			start = true;
-			await interaction.reply('가위바위보 게임을 시작할게요');
+			await interaction.reply({ content: '가위바위보를 시작할게요', embeds:[embed], components: [row] });
+			box = interaction;
 			return;
 		}
 
@@ -47,58 +73,21 @@ module.exports = {
 				unit = [];
 				result = result+"\n";
 			}
-			await interaction.reply(result+'게임을 종료할게요');
-		}
-		if (category === 'scissors') {
-			for(let i = 0; i < user.length; i++) {
-				if(user[i] === interaction.user.username) {
-					unit[i] = "가위";
-					await interaction.reply({
-						content: interaction.user.username+'님이 가위로 바꿨습니다',
-						ephemeral: true});
-					return;
-				}
-			}
-			user[user.length] = interaction.user.username;
-			unit[unit.length] = "가위";
-			await interaction.reply({
-				content: interaction.user.username+'님이 가위를 냈습니다',
-				ephemeral: true});
-			interaction.channel.send(interaction.user.username+"님이 뭘 낼지 결정했어요");
-		}
-		if (category === 'rock') {
-			for(let i = 0; i < user.length; i++) {
-				if(user[i] === interaction.user.username) {
-					unit[i] = "바위";
-					await interaction.reply({
-						content: interaction.user.username+'님이 바위로 바꿨습니다',
-						ephemeral: true});
-					return;
-				}
-			}
-			user[user.length] = interaction.user.username;
-			unit[unit.length] = "바위";
-			await interaction.reply({
-				content: interaction.user.username+'님이 바위를 냈습니다',
-				ephemeral: true});
-			interaction.channel.send(interaction.user.username+"님이 뭘 낼지 결정했어요");
-		}
-		if (category === 'paper') {
-			for(let i = 0; i < user.length; i++) {
-				if(user[i] === interaction.user.username) {
-					unit[i] = "보자기";
-					await interaction.reply({
-						content: interaction.user.username+'님이 보자기로 바꿨습니다',
-						ephemeral: true});
-					return;
-				}
-			}
-			user[user.length] = interaction.user.username;
-			unit[unit.length] = "보자기";
-			await interaction.reply({
-				content: interaction.user.username+'님이 보자기를 냈습니다',
-				ephemeral: true});
-			interaction.channel.send(interaction.user.username+"님이 뭘 낼지 결정했어요");
+			embed = new EmbedBuilder()
+				.setColor("Random")
+				.setTitle('가위바위보 종료')
+				.addFields(
+					{ name: '결과', value: result},
+				)
+				.setTimestamp();
+
+			await interaction.reply({ content: "가위바위보를 종료합니다.", ephemeral: true})
+				.then(() => setTimeout(function () { 
+					interaction.deleteReply();
+				}, 30000));
+			await box.editReply({ content: '가위바위보가 종료되었습니다.', embeds:[embed], components: [] })
+			await box.followUp({ content: '가위바위보가 종료되었습니다.', embeds:[embed] });
+			return;
 		}
 		if (category === 'status') {
 			if (user.length > 0) {
@@ -111,6 +100,107 @@ module.exports = {
 			else {
 				await interaction.reply("아직 무언가를 낸 사람이 없습니다.");
 			}
+			return
 		}
+
+		let unit_curr= "";
+		let user_curr = interaction.user.username;
+		switch(category) {
+			case 'scissors':
+				unit_curr = "가위";
+				break;
+			case 'rock':
+				unit_curr = "바위";
+				break;
+			case 'paper':
+				unit_curr = "보자기";
+				break;
+		}
+
+		for(let i = 0; i < user.length; i++) {
+			if(user[i] === user_curr) {
+				unit[i] = unit_curr;
+				await interaction.reply({
+					content: user_curr+'님이 '+unit_curr+'로 바꿨습니다',
+					ephemeral: true})
+					.then(() => setTimeout(function () { 
+						interaction.deleteReply();
+					}, 30000));
+				return;
+			}
+		}
+		user[user.length] = user_curr;
+		unit[unit.length] = unit_curr;
+		await interaction.reply({
+			content: user_curr+'님이 '+unit_curr+'를 냈습니다',
+			ephemeral: true});
+
+		embed = new EmbedBuilder()
+			.setColor("Random")
+			.setTitle('가위바위보')
+			.addFields(
+				{ name: '참가자', value: result},
+			)
+			.setTimestamp();
+		box.editReply({ content: '가위바위보를 진행중이에요', embeds:[embed], components: [row] })
+
+	},
+	async button(interaction) {
+		if(start === false) {
+			await interaction.reply({
+				content: '이미 종료된 게임입니다.',
+				ephemeral: true});
+			return;
+		}
+
+		let unit_curr= "";
+		let user_curr = interaction.user.username;
+		switch(interaction.customId) {
+			case 'scissors':
+				unit_curr = "가위";
+				break;
+			case 'rock':
+				unit_curr = "바위";
+				break;
+			case 'paper':
+				unit_curr = "보자기";
+				break;
+		}
+
+		for(let i = 0; i < user.length; i++) {
+			if(user[i] === user_curr) {
+				unit[i] = unit_curr;
+				await interaction.reply({
+					content: user_curr+'님이 '+unit_curr+'로 바꿨습니다',
+					ephemeral: true})
+					.then(() => setTimeout(function () { 
+						interaction.deleteReply();
+					}, 30000));
+				return;
+			}
+		}
+		user[user.length] = user_curr;
+		unit[unit.length] = unit_curr;
+		await interaction.reply({
+			content: user_curr+'님이 '+unit_curr+'를 냈습니다',
+			ephemeral: true})
+			.then(() => setTimeout(function () { 
+				interaction.deleteReply();
+			}, 30000));
+
+		result = "";
+		for(let i = 0; i < user.length; i++) {
+			result = result+user[i]+"\n";
+		}
+
+		embed = new EmbedBuilder()
+		.setColor("Random")
+		.setTitle('가위바위보')
+		.addFields(
+			{ name: '참가자', value: result},
+		)
+		.setTimestamp();
+		box.editReply({ content: '가위바위보를 진행중이에요', embeds:[embed], components: [row] })
+
 	},
 };

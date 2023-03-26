@@ -1,9 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-let start = false;
-let user = [];
-let unit = [];
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('벨튀')

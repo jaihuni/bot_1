@@ -28,6 +28,11 @@ client.once(Events.ClientReady, c => {
 client.login(token);
 
 client.on(Events.InteractionCreate, async interaction => {
+	if (interaction.isButton()) {
+		const but_command = interaction.client.commands.get(interaction.message.interaction.commandName);
+		but_command.button(interaction);
+	}
+
 	if (!interaction.isChatInputCommand()) return;
 
 	const command = interaction.client.commands.get(interaction.commandName);
