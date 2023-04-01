@@ -14,7 +14,7 @@ module.exports = {
 			.addFields(
 				{ name: '다음 정산일', value: ((Math.floor(today.getMonth()/3)+1)*3+1)+"/1"},
 				{ name: '-', value: '-' },
-				{ name: '-', value: '-' },
+				{ name: '23년 1분기 정산', value: '[링크](https://docs.google.com/spreadsheets/d/1kjvVItvSpeKPhzKEXd9h78JZvAQ436D7RpiLT0bQa5c/edit#gid=0)' },
 				{ name: '규정', value: '[링크](https://docs.google.com/document/d/1tJ985rP1TurLCQyf8JHEWYKWxadYAzpsFrGYtpuQATE/edit)' }
 			)
 			.setTimestamp();
