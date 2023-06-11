@@ -15,6 +15,7 @@ module.exports = {
 				{ name: '다음 정산일', value: ((Math.floor(today.getMonth()/3)+1)*3+1)+"/1"},
 				{ name: '23년 1분기 정산', value: '[링크](https://docs.google.com/spreadsheets/d/1kjvVItvSpeKPhzKEXd9h78JZvAQ436D7RpiLT0bQa5c/edit#gid=0)' },
 				{ name: '23년 2분기 중간정산', value: '[링크](https://docs.google.com/spreadsheets/d/1snx2HqOWIFe6rvB-deZQGEH3uRX4PEXXJL2MFSqbXdg/edit#gid=0)' },
+				{ name: '23년 2분기 중간정산2', value: '[링크](https://docs.google.com/spreadsheets/d/1lWCPSGPiVJoOM56hjG_f1Ip1AdObuKu4zNoQTXOFcpE/edit#gid=0)' },
 				{ name: '규정', value: '[링크](https://docs.google.com/document/d/1tJ985rP1TurLCQyf8JHEWYKWxadYAzpsFrGYtpuQATE/edit)' }
 			)
 			.setTimestamp();
